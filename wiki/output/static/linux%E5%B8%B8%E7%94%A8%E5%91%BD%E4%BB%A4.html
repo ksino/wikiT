@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>linux常用命令: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-linux tc-tagged-command" data-tags="linux command" data-tiddler-title="linux常用命令"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="linux%25E5%25B8%25B8%25E7%2594%25A8%25E5%2591%25BD%25E4%25BB%25A4.html"><h2 class="tc-title">linux常用命令</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2019年11月15日 10:47</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+command
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+linux
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><ol><li>帮助文档<blockquote><div>命令后接 <code>--help</code></div><div><code>ls --help</code></div></blockquote></li><li>显示文件或目录<blockquote><div>仅列出当前目录可见文件 <code>ls</code></div><div>列出当前目录可见文件详细信息 <code>ls -l</code></div><div>列出详细信息并以可读大小显示文件大小 <code>ls -hl</code></div><div>列出所有文件（包括隐藏）的详细信息 <code>ls -al</code></div></blockquote></li><li>创建目录<blockquote><div><code>mkdir</code></div><div><code>mkdir -p folder/subfolder</code></div><div><code>-p</code> 参数为当父目录存在时忽略，若不存在则建立，用此参数可建立多级文件夹</div></blockquote></li><li>切换目录<blockquote><div><code>cd</code>    进入用户主目录 </div><div><code>cd ~ </code>   进入用户主目录 </div><div><code>cd -</code>    返回进入此目录之前所在目录 </div><div><code>cd ..</code>    返回上一级目录 </div><div><code>cd ../..</code>  返回上两级目录 </div><div><code>cd !$ </code>   把上个命令的参数作为cd 参数使用 </div><div><code>cd /</code>    进入根目录</div><div><code>cd .</code>    当前目录</div></blockquote></li><li>创建空文件<blockquote><div><code>touch 文件名</code></div></blockquote></li><li>创建带有内容的文件<blockquote><div><code>echo</code></div></blockquote></li><li>输出文件内容到<blockquote><div><code>cat /etc/locale.gen</code> 输出 locale.gen 的内容</div><div><code>cat -n /etc/locale.gen</code>  输出 locale.gen 的内容并显示行号</div></blockquote></li><li>复制文件<blockquote><div><code>cp source dest</code> source 复制到 dest</div><div><code>cp folder/*  dest</code> folder 下所有文件(<code>不含</code>子文件夹中的文件)复制到 dest</div><div><code>cp -r folder  dest</code> folder 下所有文件（包含子文件夹中的<code>所有文件</code>）复制到 dest</div></blockquote></li><li>移动或重命名<blockquote><div><code>mv</code></div></blockquote></li><li>删除文件   <blockquote><div><code>rm -r file</code> 递归删除，可删除子目录及文件</div><div><code>rm -f file</code>  强制删除</div></blockquote></li><li>显示当前目录<blockquote><div><code>pwd</code></div></blockquote></li><li><blockquote><div></div><div></div><div></div></blockquote></li><li><blockquote><div></div><div></div><div></div></blockquote></li></ol></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

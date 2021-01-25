@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>添加 cmder 到右键菜单: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-win7 tc-tagged-cmder" data-tags="win7 cmder" data-tiddler-title="添加 cmder 到右键菜单"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="%25E6%25B7%25BB%25E5%258A%25A0%2520cmder%2520%25E5%2588%25B0%25E5%258F%25B3%25E9%2594%25AE%25E8%258F%259C%25E5%258D%2595.html"><h2 class="tc-title">添加 cmder 到右键菜单</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2019年11月25日 10:14</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+cmder
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+win7
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><blockquote><div><a class="tc-tiddlylink-external" href="https://zhuanlan.zhihu.com/p/28400466" rel="noopener noreferrer" target="_blank">设置参考</a></div></blockquote><h2 class="">修改符号<code>λ</code> 为 <code>$</code></h2><ul><li>打开<code>D:\Program\Cmder\vendor\clink.lua</code></li><li>将 <code>local lambda = &quot;λ&quot;</code></li><li>修改为<code>local lambda = &quot;$&quot;</code></li></ul><h2 class="">查找历史命令</h2><blockquote><div><kbd>Ctrl</kbd> + <kbd>R</kbd></div></blockquote><h2 class="">添加至右键菜单</h2><ol><li>进入cmder的根目录，打开命令行注册右键菜单。</li><li>查看帮助命令<blockquote><div><code>cmder /?</code></div></blockquote></li><li>注册<blockquote><div><code>cmder /REGISTER ALL</code></div></blockquote></li><li>卸载<blockquote><div><code>cmder /UNREGISTER ALL</code></div></blockquote></li></ol><h2 class="">命令简化</h2><ol><li>编辑 <code>C:\Program Files (x86)\cmder\config\user-aliases.cmd</code></li><li>example: <code>djsp=django-admin startproject $*</code><blockquote><div><code>$*</code>等同于此命令可外接参数</div><div><a class="tc-tiddlylink-external" href="https://jeffjade.com/2016/01/13/2016-01-13-windows-software-cmder/" rel="noopener noreferrer" target="_blank">参考</a></div></blockquote></li></ol><h2 class="">升级备份</h2><ol><li>cmder设置<blockquote><div><code>C:\Program Files (x86)\cmder\vendor\conemu-maximus5\ConEmu.xml</code></div></blockquote></li><li>备份config文件夹<blockquote><div><code>C:\Program Files (x86)\cmder\config\</code></div></blockquote></li></ol><h2 class="">cmder的编码问题</h2><ol><li>爬虫使用cmder打印的时候，时常会出现gbk 转utf-8的<a class="tc-tiddlylink-external" href="https://www.crifan.com/unicodeencodeerror_gbk_codec_can_not_encode_character_in_position_illegal_multibyte_sequence/" rel="noopener noreferrer" target="_blank">问题</a></li><li><code>Settings &gt; Startup &gt; Environment</code></li><li>添加<code>chcp 65001</code><blockquote><div>通过 chcp命令改变代码页，UTF-8的代码页为65001</div></blockquote></li></ol></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

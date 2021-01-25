@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>tiddlywiki网上笔记svn自动更新: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-svn" data-tags="svn" data-tiddler-title="tiddlywiki网上笔记svn自动更新"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="tiddlywiki%25E7%25BD%2591%25E4%25B8%258A%25E7%25AC%2594%25E8%25AE%25B0svn%25E8%2587%25AA%25E5%258A%25A8%25E6%259B%25B4%25E6%2596%25B0.html"><h2 class="tc-title">tiddlywiki网上笔记svn自动更新</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2019年10月26日 17:30</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+svn
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><h2 class="">部署</h2><blockquote><div>在家或者公司，修改笔记，提交svn后，服务器自动更新svn，直接访问服务器的笔记就可以</div></blockquote><ul><li>SVN的版本库：<a class="tc-tiddlylink-external" href="https://svnbucket.com/#/detail/710547/source" rel="noopener noreferrer" target="_blank">SVNBucket</a></li><li>修改笔记的电脑：公司，家里</li><li>wiki笔记的服务器</li></ul><h2 class="">svn的钩子</h2><blockquote><div>提交之后，svn版本库的网站发送一个请求到服务器。服务器判断url是不是<code>/update</code></div></blockquote><ul><li><code>http://123.207.18.80:3344/update</code></li></ul><h2 class="">nginx的配置</h2><blockquote><div><code>/etc/nginx/conf.d/wiki.conf</code></div><div>端口80 –&gt; 9000：访问笔记端口</div><div>端口3344 –&gt; 9001: 接受svn更新请求的端口</div></blockquote><pre><code>server {
+  listen 80;
+  server_name 123.207.18.80;
+  location / {
+    proxy_pass http://127.0.0.1:9000;
+  }
+}
+
+server{
+  listen 3344;
+  server_name 123.207.18.80;
+  location / {
+    proxy_pass http://127.0.0.1:9001;
+  }
+}
+</code></pre><h2 class="">访问wiki的设置</h2><blockquote><div>svn path：<code>/home/ubuntu/study/wiki</code></div><div>配置文件路径：<code>/home/ubuntu/study/wikicc/wiki.sh</code></div><div>启动命令：<code>pm2 start wiki.sh</code></div></blockquote><ul><li>wiki.sh</li></ul><pre><code>tiddlywiki /home/ubuntu/study/wiki --listen port=9000 writers=root
+# writers=root 如果不设置，访问wiki的人可以更改，造成svn的冲突
+# 详细查看 listen 命令</code></pre><h2 class="">接收请求的配置</h2><blockquote><div>配置文件路径：<code>/home/ubuntu/study/wikicc/commit.js</code></div><div>接收到请求，判断路径，执行脚本</div></blockquote><pre class="javascript hljs"><code><span class="hljs-comment">// commit.js </span>
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
+<span class="hljs-keyword">var</span> server = http.createServer()
+<span class="hljs-keyword">var</span> exec = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>).execFile
+
+server.on(<span class="hljs-string">'request'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request,response</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'接受到request：&lt;'</span> + request.url + <span class="hljs-string">'&gt;'</span>)
+    <span class="hljs-keyword">var</span> url = request.url
+    <span class="hljs-keyword">if</span>(url ===<span class="hljs-string">'/update'</span>) {
+        exec(<span class="hljs-string">'./update.sh'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, stdout, stderr</span>) </span>{
+            <span class="hljs-keyword">if</span> (err) {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'err: '</span> + err)
+            }
+            <span class="hljs-keyword">if</span> (stderr) {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'stderr: '</span> + stderr)
+            }
+            <span class="hljs-keyword">if</span> (stdout) {
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'已执行: '</span> + stdout)
+            }
+        })
+
+        response.writeHead(<span class="hljs-number">200</span>,{<span class="hljs-string">'Content-Type'</span>:<span class="hljs-string">'text/html'</span>})
+        response.write(<span class="hljs-string">"success"</span>)
+        response.end()
+    }
+})
+
+server.listen(<span class="hljs-number">9001</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'服务器已启动'</span>)
+})
+</code></pre><h2 class="">更新脚本</h2><blockquote><div>配置文件路径：<code>/home/ubuntu/study/wikicc/update.js</code></div></blockquote><pre class="bash hljs"><code><span class="hljs-comment"># update.sh </span>
+<span class="hljs-meta">#!/bin/sh</span>
+svn update /home/ubuntu/study/wiki
+sleep 5
+pm2 restart /home/ubuntu/study/wikicc/wiki.sh
+</code></pre></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

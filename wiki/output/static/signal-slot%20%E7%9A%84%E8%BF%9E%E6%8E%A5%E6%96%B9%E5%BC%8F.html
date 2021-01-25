@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>signal-slot 的连接方式: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-pyqt" data-tags="pyqt" data-tiddler-title="signal-slot 的连接方式"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="signal-slot%2520%25E7%259A%2584%25E8%25BF%259E%25E6%258E%25A5%25E6%2596%25B9%25E5%25BC%258F.html"><h2 class="tc-title">signal-slot 的连接方式</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2021年01月23日 10:12</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+pyqt
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><h2 class="">signal-slot 的连接方式</h2><h3 class="">1. 自定义信号</h3><ul><li>定义信号<blockquote><div><code>frame_read = QtCore.pyqtSignal(str)</code></div><div>可以带参数，参数与触发的函数参数要一致</div></blockquote></li><li>定义连接的函数<blockquote><div><code>frame_read.connect(function(str))</code></div></blockquote></li><li>触发<blockquote><div><code>self.frame_read.emmit(str)</code></div></blockquote></li></ul><h3 class="">2. 函数触发</h3><pre class="python hljs"><code>
+<span class="hljs-comment"># @PyQt5.QtCore.pyqtSlot(参数)</span>
+<span class="hljs-comment"># def on_发送者对象名称_发射信号名称(self, 参数):</span>
+<span class="hljs-comment">#     pass</span>
+
+<span class="hljs-comment"># 定义一个 pushButton</span>
+<span class="hljs-meta">@pyqtslot()</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">on_pushButton_clicked</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">pass</span></code></pre><h3 class="">3.</h3><pre class="python hljs"><code>QtCore.QObject.connect(a, QtCore.SIGNAL(<span class="hljs-string">'QtSig()'</span>), pyFunction)
+QtCore.QObject.connect(a, QtCore.SIGNAL(<span class="hljs-string">'QtSig()'</span>), pyClass.pyMethod)
+QtCore.QObject.connect(a, QtCore.SIGNAL(<span class="hljs-string">'QtSig()'</span>), b, QtCore.SLOT(<span class="hljs-string">'QtSlot()'</span>))
+QtCore.QObject.connect(a, QtCore.SIGNAL(<span class="hljs-string">'PySig()'</span>), b, QtCore.SLOT(<span class="hljs-string">'QtSlot()'</span>))
+QtCore.QObject.connect(a, QtCore.SIGNAL(<span class="hljs-string">'PySig'</span>), pyFunction)</code></pre><h2 class="">signal-slot 的连接与中断</h2><ul><li><code>connect</code></li><li><code>disconnect</code><blockquote><div>取消连接信号与槽</div></blockquote></li><li><code>blockSignal(True)</code><blockquote><div>临时（取消）阻止指定控件所有的信号与槽的连接</div><div><code>signalsBlocked()</code></div><div>信号是否被阻止</div></blockquote></li></ul></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

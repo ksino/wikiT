@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>slice 切片: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-Python" data-tags="Python" data-tiddler-title="slice 切片"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="slice%2520%25E5%2588%2587%25E7%2589%2587.html"><h2 class="tc-title">slice 切片</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2020年04月09日 09:12</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+Python
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><h1 class="">切片操作基本表达式</h1><blockquote><div><code>object[start_index:end_index:step]</code></div></blockquote><p><a class="tc-tiddlylink-external" href="https://www.jianshu.com/p/15715d6f4dad" rel="noopener noreferrer" target="_blank">https://www.jianshu.com/p/15715d6f4dad</a></p><ul><li>step<blockquote><div>正负数均可，其绝对值大小决定了切取数据时的‘‘步长”</div><div>正负号决定了<code>切取方向</code></div><div>正表示<code>从左往右</code>取值，负表示<code>从右往左</code>取值。</div><div>当step省略时，默认为1，即从左往右以增量1取值。</div><div><code>切取方向非常重要！</code></div></blockquote></li><li>start_index<blockquote><div>表示起始索引（包含该索引本身）</div><div>该参数省略时，表示从对象<code>端点</code>开始取值，</div><div>至于是从“起点”还是从“终点”开始，则由step参数的正负决定</div><div>step为<code>正</code>从<code>起点</code>开始，为<code>负</code>从<code>终点</code>开始。</div></blockquote></li><li>end_index<blockquote><div>表示终止索引（不包含该索引本身）</div><div>该参数省略时，表示一直取到数据“端点”，</div><div>至于是到“起点”还是到“终点”，同样由step参数的正负决定</div><div>step为<code>正</code>从<code>起点</code>开始，为<code>负</code>从<code>终点</code>开始。</div></blockquote></li></ul><h2 class="">例子</h2><pre class="python hljs"><code>array = range(<span class="hljs-number">10</span>)
+<span class="hljs-comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></code></pre><table><tbody><tr class="evenRow"><th align="center">值</th><td align="center">0</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td></tr><tr class="oddRow"><th align="center">正索引</th><td align="center">0</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td></tr><tr class="evenRow"><th align="center">负索引</th><td align="center">-10</td><td align="center">-9</td><td align="center">-8</td><td align="center">-7</td><td align="center">-6</td><td align="center">-5</td><td align="center">-4</td><td align="center">-3</td><td align="center">-2</td><td align="center">-1</td></tr></tbody></table><ul><li>1. 切取单个值</li></ul><pre class="python hljs"><code>array[<span class="hljs-number">4</span>]
+<span class="hljs-comment"># 4</span>
+array[<span class="hljs-number">-4</span>]
+<span class="hljs-comment"># 6</span></code></pre><ul><li>2. 切取完整对象</li></ul><pre class="python hljs"><code>array[:]
+<span class="hljs-comment"># 从左到右</span>
+<span class="hljs-comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+array[::]
+<span class="hljs-comment"># 从左到右</span>
+<span class="hljs-comment"># [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+array[::<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># 从右到左</span>
+<span class="hljs-comment"># [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]</span></code></pre><ul><li>3. start_index和end_index全为正（+）索引的情况</li></ul><pre class="python hljs"><code>array[<span class="hljs-number">1</span>:<span class="hljs-number">6</span>]
+<span class="hljs-comment"># [1, 2, 3, 4, 5]</span>
+<span class="hljs-comment"># step=1，从左往右取值</span>
+<span class="hljs-comment"># start_index=1到end_index=6同样表示从左往右取值。</span>
+
+array[<span class="hljs-number">1</span>:<span class="hljs-number">6</span>:<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># []</span>
+<span class="hljs-comment"># 输出为空列表，说明没取到数据。</span>
+<span class="hljs-comment"># step=-1，决定了从右往左取值</span>
+<span class="hljs-comment"># start_index=1到end_index=6决定了从左往右取值</span>
+<span class="hljs-comment"># 两者矛盾，所以为空。</span>
+
+a[<span class="hljs-number">6</span>:<span class="hljs-number">1</span>]
+<span class="hljs-comment"># []</span>
+<span class="hljs-comment"># 同样输出为空列表。</span>
+<span class="hljs-comment"># step=1，决定了从左往右取值</span>
+<span class="hljs-comment"># start_index=6到end_index=1决定了从右往左取值</span>
+<span class="hljs-comment"># 两者矛盾，所以为空。</span>
+
+a[:<span class="hljs-number">6</span>]
+<span class="hljs-comment"># [0, 1, 2, 3, 4, 5]</span>
+<span class="hljs-comment"># step=1，从左往右取值，从“起点”开始一直取到end_index=6。</span>
+
+a[:<span class="hljs-number">6</span>:<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># [9, 8, 7]</span>
+<span class="hljs-comment"># step=-1，从右往左取值，从“终点”开始一直取到end_index=6。</span>
+
+a[<span class="hljs-number">6</span>:]
+<span class="hljs-comment"># [6, 7, 8, 9]</span>
+<span class="hljs-comment"># step=1，从左往右取值，从start_index=6开始，一直取到“终点”。</span>
+
+a[<span class="hljs-number">6</span>:]
+<span class="hljs-comment"># [6, 7, 8, 9]</span>
+<span class="hljs-comment"># step=1，从左往右取值，从start_index=6开始，一直取到“终点”。</span></code></pre><ul><li>4. start_index和end_index全为负（-）索引的情况</li></ul><pre class="python hljs"><code>a[<span class="hljs-number">-1</span>:<span class="hljs-number">-6</span>]
+<span class="hljs-comment"># []</span>
+<span class="hljs-comment"># step=1，从左往右取值</span>
+<span class="hljs-comment"># start_index=-1到end_index=-6决定了从右往左取值，两者矛盾，所以为空。</span>
+
+a[<span class="hljs-number">-1</span>:<span class="hljs-number">-6</span>:<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># [9, 8, 7, 6, 5]</span>
+<span class="hljs-comment"># step=-1，从右往左取值</span>
+<span class="hljs-comment"># start_index=-1到end_index=-6同样是从右往左取值。</span>
+
+a[<span class="hljs-number">-6</span>:<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># [4, 5, 6, 7, 8]</span>
+<span class="hljs-comment"># step=1，从左往右取值，而start_index=-6到end_index=-1同样是从左往右取值。</span>
+
+a[:<span class="hljs-number">-6</span>]
+<span class="hljs-comment"># [0, 1, 2, 3]</span>
+<span class="hljs-comment"># step=1，从左往右取值，从“起点”开始一直取到end_index=-6。</span>
+
+a[:<span class="hljs-number">-6</span>:<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># [9, 8, 7, 6, 5]</span>
+<span class="hljs-comment"># step=-1，从右往左取值，从“终点”开始一直取到end_index=-6。</span>
+
+a[<span class="hljs-number">-6</span>:]
+<span class="hljs-comment"># [4, 5, 6, 7, 8, 9]</span>
+<span class="hljs-comment"># step=1，从左往右取值，从start_index=-6开始，一直取到“终点”。</span>
+
+a[<span class="hljs-number">-6</span>::<span class="hljs-number">-1</span>]
+<span class="hljs-comment"># [4, 3, 2, 1, 0]</span>
+<span class="hljs-comment"># step=-1，从右往左取值，从start_index=-6开始，一直取到“起点”。</span>
+</code></pre><ul><li>5. start_index和end_index正（+）负（-）混合索引的情况</li></ul><pre class="python hljs"><code>&gt;&gt;&gt;a[<span class="hljs-number">1</span>:<span class="hljs-number">-6</span>]
+<span class="hljs-meta">&gt;&gt;&gt; </span>[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+start_index=<span class="hljs-number">1</span>在end_index=<span class="hljs-number">-6</span>的左边，因此从左往右取值，而step=<span class="hljs-number">1</span>同样决定了从左往右取值，因此结果正确</code></pre></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

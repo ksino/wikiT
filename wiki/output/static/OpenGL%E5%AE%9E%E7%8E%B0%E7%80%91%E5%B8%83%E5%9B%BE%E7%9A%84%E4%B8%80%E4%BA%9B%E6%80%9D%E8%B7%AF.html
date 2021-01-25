@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>OpenGL实现瀑布图的一些思路: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-opengl" data-tags="opengl" data-tiddler-title="OpenGL实现瀑布图的一些思路"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="OpenGL%25E5%25AE%259E%25E7%258E%25B0%25E7%2580%2591%25E5%25B8%2583%25E5%259B%25BE%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259B%25E6%2580%259D%25E8%25B7%25AF.html"><h2 class="tc-title">OpenGL实现瀑布图的一些思路</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2019年11月29日 16:50</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+opengl
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><blockquote><div><a class="tc-tiddlylink-external" href="https://blog.csdn.net/pc0de/article/details/69786243" rel="noopener noreferrer" target="_blank">https://blog.csdn.net/pc0de/article/details/69786243</a></div><div>若需要通过<a class="tc-tiddlylink tc-tiddlylink-missing" href="OPenGL.html">OPenGL</a>实现瀑布图，则必需考虑数据的实时<code>变化</code>、<code>移动</code>、<code>缩放</code>、<code>旋转</code>等实际需求</div></blockquote><ul><li>1、使用glDrawPixels绘制</li></ul><p>此方法是直接绘制位图的，可通过glPixelZoom 缩放、gluOrtho2D 定位具体位置。
+旋转目前没有找到好的方法，也许可以直接操作数据。
+此方法的优点是使用方便，可以直接定义位图的颜色索引，目前看来最明显的缺点是旋转需要自己操作数据（通过cpu实现）</p><ul><li>2、使用纹理贴图</li></ul><p>将数据通过glTex2D绑定在某纹理，通过纹理与2d平面顶点的映射直接实现缩放、移动旋转等效果
+此方法优点是图形的变换操作简便；
+缺点是：A.无法使用颜色索引。B.数据若发生变化，需要重新设置纹理数据</p><p>到底使用哪一种当然是根据实际需求选择，就目前掌握的皮毛来说，我比较倾向使用纹理贴图实现。</p><ul><li>下面是实现的一个效果</li></ul><p><img src="https://img-blog.csdn.net/20170411060241292?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcGMwZGU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+</p></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+

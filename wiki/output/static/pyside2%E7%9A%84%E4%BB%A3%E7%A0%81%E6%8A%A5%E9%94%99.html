@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="generator" content="TiddlyWiki" />
+<meta name="tiddlywiki-version" content="5.1.23" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="format-detection" content="telephone=no">
+<link id="faviconLink" rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" href="static.css">
+<title>pyside2的代码报错: H-wiki — Learn and live.</title>
+</head>
+<body class="tc-body">
+
+<section class="tc-story-river tc-static-story-river">
+<p><div class="tc-tiddler-frame tc-tiddler-view-frame tc-tiddler-exists  tc-tagged-pyqt" data-tags="pyqt" data-tiddler-title="pyside2的代码报错"><div class="tc-tiddler-title"><div class="tc-titlebar"><span class="tc-tiddler-controls"><span class=" tc-reveal"><button aria-label="更多" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fmore-tiddler-actions" title="更多动作"></button><div class=" tc-reveal" hidden="true"></div></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="编辑" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fedit" title="编辑此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal"><button aria-label="关闭" class="tc-btn-invisible tc-btn-%24%3A%2Fcore%2Fui%2FButtons%2Fclose" title="关闭此条目"></button></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span><span class=" tc-reveal" hidden="true"></span></span><a class="tc-tiddlylink tc-tiddlylink-resolves" href="pyside2%25E7%259A%2584%25E4%25BB%25A3%25E7%25A0%2581%25E6%258A%25A5%25E9%2594%2599.html"><h2 class="tc-title">pyside2的代码报错</h2></a></div><div class="tc-tiddler-info tc-popup-handle tc-reveal" hidden="true"></div></div><div class=" tc-reveal" hidden="true"></div>
+<div class=" tc-reveal"><div class="tc-subtitle"><a class="tc-tiddlylink tc-tiddlylink-missing" href=".html"></a>2020年11月25日 11:00</div></div><div class=" tc-reveal">
+<div class="tc-tags-wrapper"><span class="tc-tag-list-item">
+<span class="tc-tag-label tc-btn-invisible" draggable="true" style="background-color:;
+fill:#333333;
+color:#333333;">
+pyqt
+</span>
+<span class="tc-drop-down tc-reveal" hidden="true"></span></span></div>
+</div>
+
+<div class="tc-tiddler-body tc-reveal"><ul><li>运行pyside2的代码报错</li></ul><pre><code>qt.qpa.plugin: Could not load the Qt platform plugin &quot;windows&quot; in &quot;&quot; even though it was found.
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: direct2d, minimal, offscreen, windows.</code></pre><p><a class="tc-tiddlylink-external" href="https://www.cnblogs.com/hankleo/p/13432119.html" rel="noopener noreferrer" target="_blank">https://www.cnblogs.com/hankleo/p/13432119.html</a></p><ul><li>解决办法 <blockquote><div><span style="color: #19CAAD"><strong>C:\Anaconda2\envs\qt\Lib\site-packages\<a class="tc-tiddlylink tc-tiddlylink-missing" href="PySide2.html">PySide2</a>\plugins\platforms</strong></span></div><div>替换</div><div><span style="color: #F4606C"><strong> C:\Anaconda2\envs\qt\Library\plugins\platforms</strong></span></div></blockquote></li><li><span style="color: #F4606C"><strong>复制之后可以正常运行，但是界面与qt designer预览的不一致</strong></span></li><li>彻底的解决办法是，安装库的时候，已经安装了pyside2就不要再安装pyqt</li><li>参看<a class="tc-tiddlylink tc-tiddlylink-resolves" href="commandcenter%2520python2%25E8%25BF%2581%25E7%25A7%25BB%25E5%2588%25B0python3.html">commandcenter python2迁移到python3</a></li></ul></div>
+
+<div class="tc-tiddler-plugin-info tc-reveal"><p>
+</p></div>
+
+
+
+</div>
+
+</p>
+</section>
+</body>
+</html>
+
